@@ -1,0 +1,27 @@
+# Use root/example as user/password credentials
+version: '1.0'
+
+services:
+  assessment2mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - './dockervolume/mongodb:/data/db'
+    ports:
+      - 27017:27017
+  
+  # backend microservice
+  backend:
+    build: ./backend
+    ports:
+      - 5001:5001
+    depends_on:
+      - assessment2mongo
+    environment:
+      MONGO_URI: mongodb://root:example@assessment2mongo:27017/assessment2users?authSource=admin
+    restart: always
+    links:
+      - assessment2mongo
