@@ -8,7 +8,7 @@
   <li>Containerised with docker</li>
   <li>Easily deployed with Terraform and docker-compose</li>
   <li>Deployed on my free-tier aws EC2 instance (t2.micro)</li>
-  <li>http://52.221.192.224:5001/users</li>
+  <li><del>http://52.221.192.224:5001/users</del></li>
 </ul>
 
 ## 🔌 Terraform running
